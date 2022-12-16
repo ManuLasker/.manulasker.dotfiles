@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Add to path
+addToPathFront $LOCAL_PATH
+addToPathFront "$HOME/.local/opt/node-v16.14.2/bin"
+addToPathFront "$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
+addToPathFront "$HOME/.local/opt/exercism-3.0.13"
+addToPathFront "$HOME/.local/opt/Postman"
+addToPathFront "$HOME/.local/opt/idea-IC-221.5921.22/bin"
+addToPathFront "$HOME/.pyenv/bin"
+addToPathFront "$HOME/.local/scripts"
+
+
+# Execute add to path to rust
+source "$HOME/.cargo/env"
+
+# Exported paths
+export AWS_DEFAULT_REGION=us-east-1
+export PYENV_ROOT="$HOME/.pyenv"

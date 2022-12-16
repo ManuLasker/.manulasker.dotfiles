@@ -1,0 +1,35 @@
+#! /usr/bin/env zsh
+alias cp='cp -v'
+alias rm='rm -I'
+alias mv='mv -iv'
+alias ln='ln -sriv'
+alias xclip='xclip -selection c'
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias diff='diff --color=auto'
+alias ip='ip --color=auto'
+
+alias ll='ls -la'
+alias la='ls -A'
+alias l='ls -F'
+
+alias python="python3"
+alias xsc="xclip -selection clipboard"
+alias cclip="xclip -selection clipboard"
+alias pclip="xclip -selection clipboard"
+
+alias my_ip="ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs"
+
+# Alias to goto personal projects
+alias gotopp="cd $HOME/Documents/$ALIAS_USER/personal_projects"
+alias gotocp="cd $HOME/Documents/$ALIAS_USER/contributed_projects"
+alias gotoaid="cd $HOME/Documents/bancolombia/AID"
+alias gotobc="cd $HOME/Documents/bancolombia"
+
+command -v nvim > /dev/null && alias vim="$VIM" \
+	alias vims="NVIM_LISTEN_ADDRESS=/tmp/nvim $VIM"
+
+alias bp="source ~/.zshrc"

@@ -1,0 +1,121 @@
+#!/usr/bin/env zsh
+
+export STOW_FOLDERS="bin,nvim,personal,tmux,zsh,uwuntu"
+
+addToPath() {
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$PATH:$1
+    fi
+}
+
+commitDotFiles() {
+    #pushd $DOTFILES
+    #pushd personal
+    #git add .
+    #git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
+    #git push origin master
+    #popd
+    #git add .
+    #git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
+    #git push origin master
+    #popd
+}
+
+dotFileInstall() {
+    DOTFILES=$1
+    $DOTFILES/install $1
+}
+
+addToPathFront() {
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$1:$PATH
+    fi
+}
+
+find() {
+	if [ $# = 1 ]
+	then
+		command find . -iname "*$@*"
+	else
+		command find "$@"
+	fi
+}
+
+catr() {
+    tail -n "+$1" $3 | head -n "$(($2 - $1 + 1))"
+}
+
+validateYaml() {
+    python3 -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $1
+}
+
+tmuxSetUpEnv() {
+    tmux setenv AWS_ACCESS_KEY_ID $AWS_ACCESS_KEY_ID
+    tmux setenv AWS_SECRET_ACCESS_KEY $AWS_SECRET_ACCESS_KEY
+    tmux setenv AWS_SESSION_TOKEN $AWS_SESSION_TOKEN
+}
+
+showPods() {
+    watch -n 1 kubectl get pods -n aid-$1
+}
+
+showLogPod() {
+    kubectl logs -f $2 -n aid-$1
+}
+
+showLogApp() {
+    kubectl logs -f -l app=$2 -n aid-$1
+}
+
+showPodResources() {
+    watch -n 1 kubectl top pods -n aid-$1
+}
+
+writeLastPodLogs(){
+    kubectl logs $2 -n aid-$1 --tail=$3 > ${1}_log/${2}.log
+}
+
+writeLastPodsLogs(){
+    pods_name=$(kubectl get pods --no-headers -o custom-columns=":metadata.name" -n aid-$1)
+    pods_name=${pods_name// /,}
+    for pod_name in $(echo $pods_name | sed "s/,/ /g")
+    do
+        echo $pod_name
+        writeLastPodLogs $1 $pod_name $2
+    done
+}
+
+pyClean () {
+    find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
+}
+
+pyDisableCache () {
+    export PYTHONDONTWRITEBYTECODE=1
+}
+
+prettyCsv() {
+    column -t -s, -n "$@" | less -F -S -X -K
+}
+
+viewCer() {
+    gcr-viewer $1
+}
+
+generateCertificateBancolombia() {
+    openssl req -new -subj "/C=CO/ST=ANTIOQUIA/L=MEDELLIN/O=BANCOLOMBIA S.A./OU=VICEPRESIDENCIA DE TECNOLOGIA/CN=$1" \
+        -addext "subjectAltName = DNS:$1" -addext "certificatePolicies = 1.2.3.4" -newkey rsa:2048 \
+        -keyout $1.pem -out $1.csr
+}
+
+getP12FromCerAndPemBancolombia() {
+    openssl pkcs12 -export -chain -CAfile ca.cer -in $1.cer \
+        -inkey $1.pem -out $1.p12 -name $1
+}
+
+getPrivateKeyFromP12Bancolombia() {
+    openssl pkcs12 -in $1.p12 -nocerts -out $1.key
+}
+
+removePassFromPrivateKeyBancolombia() {
+    openssl rsa -in $1.key -out $1.no-pass.key
+}
