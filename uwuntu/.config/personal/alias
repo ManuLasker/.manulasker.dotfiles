@@ -23,6 +23,10 @@ alias pclip="xclip -selection clipboard"
 
 alias my_ip="ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs"
 
+# set keyboard layout aliases
+alias kbes="setxkbmap es"
+alias kbcm="setxkbmap cm"
+
 # Alias to goto personal projects
 alias gotopp="cd $HOME/Documents/$ALIAS_USER/personal_projects"
 alias gotocp="cd $HOME/Documents/$ALIAS_USER/contributed_projects"
