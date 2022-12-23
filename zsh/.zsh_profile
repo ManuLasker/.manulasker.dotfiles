@@ -35,12 +35,12 @@ fi
 if command -v pyenv > /dev/null; then
     PATH="$(bash --norc -ec 'IFS=:; paths=($PATH);
     for i in ${!paths[@]}; do
-    if [[ ${paths[i]} == "''/home/$USER/.pyenv/shims''" ]]; then unset '\''paths[i]'\'';
+    if [[ ${paths[i]} == "''/home/${USER}/.pyenv/shims''" ]]; then unset '\''paths[i]'\'';
     fi; done;
     echo "${paths[*]}"')"
     export PATH="/home/$USER/.pyenv/shims:${PATH}"
     export PYENV_SHELL=zsh
-    source '/home/$USER/.pyenv/libexec/../completions/pyenv.zsh'
+    source "/home/${USER}/.pyenv/libexec/../completions/pyenv.zsh"
     command pyenv rehash 2>/dev/null
     pyenv() {
       local command
