@@ -9,3 +9,5 @@ fi
 
 STOW_FOLDERS=$STOW_FOLDERS
 DOTFILES=$DOTFILES
+echo "Install dotfiles and nvim configuration"
+$DOTFILES/install $DOTFILES
