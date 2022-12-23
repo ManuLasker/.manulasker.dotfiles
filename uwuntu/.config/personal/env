@@ -11,7 +11,7 @@ addToPath() {
 
 commitDotFiles() {
     pushd $DOTFILES
-    pushd nvim
+    pushd nvim/.config/nvim
     git add .
     git commit -m "automagic messaging from me in the past.  Have you accomplished something meaningful yet?"
     git push -u origin master
