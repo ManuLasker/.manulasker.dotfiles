@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 export STOW_FOLDERS="bin,nvim,personal,tmux,zsh,uwuntu"
+export DOTFILES="$HOME/Documents/$ALIAS_USER/personal_projects/.$ALIAS_USER.dotfiles"
 
 addToPath() {
     if [[ "$PATH" != *"$1"* ]]; then
@@ -9,16 +10,16 @@ addToPath() {
 }
 
 commitDotFiles() {
-    #pushd $DOTFILES
-    #pushd personal
-    #git add .
-    #git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
-    #git push origin master
-    #popd
-    #git add .
-    #git commit -m "automagic messaging from me in the past.  Have you checked up your butthole?"
-    #git push origin master
-    #popd
+    pushd $DOTFILES
+    pushd nvim
+    git add .
+    git commit -m "automagic messaging from me in the past.  Have you accomplished something meaningful yet?"
+    git push -u origin master
+    popd
+    git add .
+    git commit -m "automagic messaging from me in the past.  Have you accomplished something meaningful yet?"
+    git push -u origin master
+    popd
 }
 
 dotFileInstall() {
