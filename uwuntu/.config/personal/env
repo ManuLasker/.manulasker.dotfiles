@@ -57,37 +57,38 @@ tmuxSetUpEnv() {
 }
 
 showPods() {
-    watch -n 1 kubectl get pods -n aid-$1
+    watch -n 1 kubectl get pods -n "$1-$2"
 }
 
 showLogPod() {
-    kubectl logs -f $2 -n aid-$1
+    kubectl logs -f $3 -n $1-$2
 }
 
 showLogApp() {
-    kubectl logs -f -l app=$2 -n aid-$1
+    kubectl logs -f -l app=$3 -n $1-$2
 }
 
 showPodResources() {
-    watch -n 1 kubectl top pods -n aid-$1
+    watch -n 1 kubectl top pods -n $1-$2
 }
 
 writeLastPodLogs(){
-    kubectl logs $2 -n aid-$1 --tail=$3 > ${1}_log/${2}.log
+    kubectl logs $3 -n $1-$4 --tail=$3 > ${2}_log/${3}.log
 }
 
 writeLastPodsLogs(){
-    pods_name=$(kubectl get pods --no-headers -o custom-columns=":metadata.name" -n aid-$1)
+    pods_name=$(kubectl get pods --no-headers -o custom-columns=":metadata.name" -n $1-$2)
     pods_name=${pods_name// /,}
     for pod_name in $(echo $pods_name | sed "s/,/ /g")
     do
         echo $pod_name
-        writeLastPodLogs $1 $pod_name $2
+        writeLastPodLogs $2 $pod_name $3
     done
 }
 
 pyClean () {
-    find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
+    sudo rm -rf $(find . -regex '^.*\(__pycache__\|\.py[co]\)$')
+    # find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
 }
 
 pyDisableCache () {
