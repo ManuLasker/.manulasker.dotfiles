@@ -31,6 +31,7 @@ alias kben="setxkbmap us"
 alias gotopp="cd $HOME/Documents/$ALIAS_USER/personal_projects"
 alias gotocp="cd $HOME/Documents/$ALIAS_USER/contributed_projects"
 alias gotoaid="cd $HOME/Documents/bancolombia/AID"
+alias gotopai="cd $HOME/Documents/bancolombia/Platform_IA"
 alias gotobc="cd $HOME/Documents/bancolombia"
 
 command -v nvim > /dev/null && alias vim="$VIM" \
