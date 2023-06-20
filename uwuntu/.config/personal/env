@@ -61,7 +61,7 @@ watchPods() {
 }
 
 showPods() {
-    watch -n 1 kubectl get pods -n "$1-$2"
+    kubectl get pods -n "$1-$2"
 }
 
 showLogPod() {
