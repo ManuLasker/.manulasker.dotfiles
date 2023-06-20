@@ -56,7 +56,7 @@ tmuxSetUpEnv() {
     tmux setenv AWS_SESSION_TOKEN $AWS_SESSION_TOKEN
 }
 
-showPods() {
+watchPods() {
     watch -n 1 kubectl get pods -n "$1-$2"
 }
 
@@ -68,7 +68,7 @@ showLogApp() {
     kubectl logs -f -l app=$3 -n $1-$2
 }
 
-showPodResources() {
+watchPodResources() {
     watch -n 1 kubectl top pods -n $1-$2
 }
 
