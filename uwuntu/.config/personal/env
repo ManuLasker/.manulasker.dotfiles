@@ -68,6 +68,10 @@ showLogPod() {
     kubectl logs -f $3 -n $1-$2
 }
 
+deletePod() {
+    kubectl delete pods $3 -n $1-$2
+}
+
 showLogApp() {
     kubectl logs -f -l app=$3 -n $1-$2
 }
