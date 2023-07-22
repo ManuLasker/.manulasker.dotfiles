@@ -36,6 +36,7 @@ alias gotocp="cd $HOME/Documents/$ALIAS_USER/contributed_projects"
 alias gotoaid="cd $HOME/Documents/bancolombia/AID"
 alias gotopai="cd $HOME/Documents/bancolombia/Platform_IA"
 alias gotobc="cd $HOME/Documents/bancolombia"
+alias gotocbw="cd $HOME/Documents/bancolombia/Chatbots/wenbot"
 
 command -v nvim > /dev/null && alias vim="$VIM" \
 	alias vims="NVIM_LISTEN_ADDRESS=/tmp/nvim $VIM"
