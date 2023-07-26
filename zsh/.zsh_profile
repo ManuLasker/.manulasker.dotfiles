@@ -13,6 +13,8 @@ for i in `find -L $PERSONAL`; do
 	source $i
 done
 
+bindkey -s ^f "tmux-sessionizer\n"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 if test -d /home/$USER/miniconda3/bin > /dev/null; then
