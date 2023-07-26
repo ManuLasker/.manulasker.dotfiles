@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
+source "$HOME/.zsh_profile"
+export DOTFILES="$HOME/Documents/$ALIAS_USER/personal_projects/.$ALIAS_USER.dotfiles"
+export PERSONAL_PROJECTS="$HOME/Documents/$ALIAS_USER/personal_projects"
+export CONTRIBUTED_PROJECTS="$HOME/Documents/$ALIAS_USER/contributed_projects"
+export WORK="$HOME/Documents/bancolombia"
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/work/builds ~/projects ~/ ~/work ~/personal ~/personal/yt -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find $PERSONAL_PROJECTS ~/ $WORK $CONTRIBUTED_PROJECTS -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then

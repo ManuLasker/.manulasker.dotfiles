@@ -2,6 +2,10 @@
 
 export STOW_FOLDERS="bin,nvim,personal,tmux,zsh,uwuntu,i3"
 export DOTFILES="$HOME/Documents/$ALIAS_USER/personal_projects/.$ALIAS_USER.dotfiles"
+export PERSONAL_PROJECTS="$HOME/Documents/$ALIAS_USER/personal_projects"
+export CONTRIBUTED_PROJECTS="$HOME/Documents/$ALIAS_USER/contributed_projects"
+export WORK="$HOME/Documents/bancolombia"
+
 
 addToPath() {
     if [[ "$PATH" != *"$1"* ]]; then
