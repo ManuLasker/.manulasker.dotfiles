@@ -30,6 +30,9 @@ alias kben="setxkbmap us"
 # Alias for kubectl
 alias kb="kubectl"
 
+# Alias for xrandr and fix my i3 workflow with multiple monitors
+alias xr="xrandr --output HDMI-1-1 --auto --left-of eDP-1-1"
+
 # Alias to goto personal projects
 alias gotopp="cd $HOME/Documents/$ALIAS_USER/personal_projects"
 alias gotocp="cd $HOME/Documents/$ALIAS_USER/contributed_projects"

@@ -3,7 +3,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export LOCAL_PATH=$HOME/.local/bin
 export ALIAS_USER=manulasker
 
-alias VIM="nvim"
+VIM="nvim"
 alias vim="nvim"
 
 # Sourcing personal config
