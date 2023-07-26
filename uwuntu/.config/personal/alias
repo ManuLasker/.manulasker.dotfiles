@@ -31,8 +31,11 @@ alias kben="setxkbmap us"
 alias kb="kubectl"
 
 # Alias for xrandr and fix my i3 workflow with multiple monitors
-alias xr2monitors="xrandr --output HDMI-1-1 --primary --mode 1920x1080 --left-of eDP-1-1"
-alias xr1monitor="xrandr --output HDMI-1-1 --primary --mode 1920x1080 --output eDP-1-1 --off"
+alias xr2monitors="xrandr --output HDMI-1-1 --primary --mode 1920x1080 \
+    --left-of eDP-1-1 --output eDP-1-1 --mode 1920x1080 && sleep 2 && \
+    i3 restart && sleep 2 && i3 restart"
+alias xr1monitor="xrandr --output HDMI-1-1 --primary --mode 1920x1080 \
+    --output eDP-1-1 --off && sleep 2 && i3 restart"
 
 # Alias to goto personal projects
 alias gotopp="cd $HOME/Documents/$ALIAS_USER/personal_projects"
