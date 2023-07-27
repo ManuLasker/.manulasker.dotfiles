@@ -174,21 +174,21 @@ mode "resize" {
 }
 
 # Autostart applications
-exec_always --no-startup-id xwallpaper --daemon --output HDMI-1-1 --center /home/manu-lasker26/.config/xwallpaper/007.png
-exec_always --no-startup-id xwallpaper --daemon --output eDP-1-1 --center /home/manu-lasker26/.config/xwallpaper/007.png
+exec_always --no-startup-id xwallpaper --daemon --output HDMI-1-1 --center /home/manu-lasker26/.config/xwallpaper/014.jpg
+exec_always --no-startup-id xwallpaper --daemon --output eDP-1-1 --center /home/manu-lasker26/.config/xwallpaper/014.jpg
 exec_always --no-startup-id numlockx on
 exec xset r rate 200 40
 exec --no-startup-id xautolock -time 5 -locker 'i3lock-fancy -p'
 exec --no-startup-id picom
 
 # Theme colors
-client.focused          #c6c6c6 #1f1f1f #c6c6c6 #8abeb7 #8abeb7
-client.focused_inactive #c6c6c6 #1f1f1f #c6c6c6 #8abeb7 #8abeb7
-client.unfocused        #c6c6c6 #1f1f1f #c6c6c6 #8abeb7 #8abeb7
-client.urgent           #c6c6c6 #1f1f1f #c6c6c6 #8abeb7 #8abeb7
-client.placeholder      #c6c6c6 #1f1f1f #c6c6c6 #8abeb7 #8abeb7
+client.focused          #512DA8 #212121 #512DA8 #757575 #757575
+client.focused_inactive #512DA8 #212121 #512DA8 #BDBDBD #BDBDBD
+client.unfocused        #512DA8 #212121 #512DA8 #BDBDBD
+client.urgent           #512DA8 #212121 #512DA8 #BDBDBD #BDBDBD
+client.placeholder      #512DA8 #212121 #212121 #BDBDBD #BDBDBD
 
-client.background       #1f1f1f
+client.background       #212121
 
 # set power-manager and volume control
 
