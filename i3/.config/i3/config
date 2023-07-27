@@ -176,8 +176,6 @@ mode "resize" {
 # Autostart applications
 exec_always --no-startup-id xwallpaper --daemon --output HDMI-1-1 --center /home/manu-lasker26/.config/xwallpaper/007.png
 exec_always --no-startup-id xwallpaper --daemon --output eDP-1-1 --center /home/manu-lasker26/.config/xwallpaper/007.png
-
-# exec_always --no-startup-id $HOME/.config/polybar/i3wmthemer_bar_launch.sh
 exec_always --no-startup-id numlockx on
 exec xset r rate 200 40
 exec --no-startup-id xautolock -time 5 -locker 'i3lock-fancy -p'
