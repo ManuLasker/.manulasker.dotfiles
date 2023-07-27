@@ -7,4 +7,12 @@ do
     echo "Removing $folder"
     stow -D $folder -t $HOME
 done
+
+I3_DELETE=$1
+if ! [[ -z $I3_DELETE ]]; then
+    echo "Removing i3 themer"
+    pushd i3-themer
+    ./i3-themer -r
+    popd
+fi
 popd

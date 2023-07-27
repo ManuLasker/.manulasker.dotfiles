@@ -12,8 +12,11 @@ do
     echo "done stowing $folder"
 done
 
-echo "installing i3 with theme $I3_THEME"
-pushd i3-themer
-./i3-themer -a $I3_THEME
-popd
+if ! [[ -z $I3_THEME ]]; then
+    echo "installing i3 with theme $I3_THEME"
+    I3_THEME=$2
+    pushd i3-themer
+    ./i3-themer -a $I3_THEME
+    popd
+fi
 popd
