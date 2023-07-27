@@ -7,7 +7,12 @@ if [[ -z $DOTFILES ]]; then
     DOTFILES=$1
 fi
 
+if [[ -z $I3_THEME ]]; then
+    I3_THEME=$2
+fi
+
 STOW_FOLDERS=$STOW_FOLDERS
+I3_THEME=$I3_THEME
 DOTFILES=$DOTFILES
 echo "Install dotfiles and nvim configuration"
-$DOTFILES/install $DOTFILES
+$DOTFILES/install $DOTFILES $I3_THEME
