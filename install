@@ -2,7 +2,7 @@
 # I am using zsh instead of bash.  I was having some troubles using bash with
 # arrays.  Didn't want to investigate, so I just did zsh
 DOTFILES=$1
-I3_THEME=$2
+STOW_FOLDERS=$2
 pushd $DOTFILES
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
@@ -11,12 +11,13 @@ do
     stow $folder -t $HOME
     echo "done stowing $folder"
 done
-
-if ! [[ -z $I3_THEME ]]; then
-    echo "installing i3 with theme $I3_THEME"
-    I3_THEME=$2
-    pushd i3-themer
-    ./i3-themer -a $I3_THEME
-    popd
-fi
 popd
+
+function restartApps(){
+    pkill dunst
+    source ~/.zshrc
+    i3 restart
+    notify-send "Installation Complete!"
+}
+
+restartApps 2&> /dev/null

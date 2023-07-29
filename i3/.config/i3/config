@@ -19,15 +19,23 @@ bindsym $mod+Return exec urxvt -e zsh -c "tmux -f $HOME/.config/tmux/.tmux.conf"
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-# lauch google chrome
-bindsym $mod+g exec --no-startup-id google-chrome-stable --password-store=gnome
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop # lauch google chrome
+bindsym $mod+g exec --no-startup-id google-chrome-stable --password-store=gnome --enable-privacy-sandbox-ads-apis
+# User defined keys
+bindsym Print exec flameshot gui
+bindsym Shift+Print exec flameshot gui
+bindsym $mod+F1 exec --no-startup-id i3-sensible-terminal -e alsamixer
+bindsym $mod+F2 exec --no-startup-id sensible-browser
+bindsym $mod+F3 exec --no-startup-id i3-sensible-terminal -e vifm
+bindsym $mod+F4 exec --no-startup-id xcalc
+bindsym $mod+F5 exec --no-startup-id i3-sensible-terminal -e cmus
 
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+bindsym $mod+Shift+a focus child
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -174,21 +182,21 @@ mode "resize" {
 }
 
 # Autostart applications
-exec_always --no-startup-id xwallpaper --daemon --output HDMI-1-1 --center /home/manu-lasker26/.config/xwallpaper/014.jpg
-exec_always --no-startup-id xwallpaper --daemon --output eDP-1-1 --center /home/manu-lasker26/.config/xwallpaper/014.jpg
+#exec_always --no-startup-id xwallpaper --daemon --output HDMI-1-1 --center /home/manu-lasker26/.config/xwallpaper/$wallpaper
+#exec_always --no-startup-id xwallpaper --daemon --output eDP-1-1 --center /home/manu-lasker26/.config/xwallpaper/$wallpaper
 exec_always --no-startup-id numlockx on
 exec xset r rate 200 40
-exec --no-startup-id xautolock -time 5 -locker 'i3lock-fancy -p'
-exec --no-startup-id picom
+# exec --no-startup-id xautolock -time 5 -locker 'i3lock-fancy -p'
+# exec --no-startup-id picom
 
 # Theme colors
-client.focused          #512DA8 #212121 #512DA8 #757575 #757575
-client.focused_inactive #512DA8 #212121 #512DA8 #BDBDBD #BDBDBD
-client.unfocused        #512DA8 #212121 #512DA8 #BDBDBD
-client.urgent           #512DA8 #212121 #512DA8 #BDBDBD #BDBDBD
-client.placeholder      #512DA8 #212121 #212121 #BDBDBD #BDBDBD
-
-client.background       #212121
+#client.focused          ${i3wm['client.focused']}
+#client.focused_inactive ${i3wm['client.focused_inactive']}
+#client.unfocused        ${i3wm['client.unfocused']}
+#client.urgent           ${i3wm['client.urgent']}
+#client.placeholder      ${i3wm['client.placeholder']}
+#
+#client.background       ${i3wm['client.background']}
 
 # set power-manager and volume control
 
@@ -202,14 +210,6 @@ bindsym XF86TouchpadOff exec --no-startup-select-pane -Lid synclient Touchpadoff
 
 focus_follows_mouse no
 
-# User defined keys
-bindsym Print exec flameshot gui
-bindsym Shift+Print exec flameshot gui
-bindsym $mod+F1 exec --no-startup-id i3-sensible-terminal -e alsamixer
-bindsym $mod+F2 exec --no-startup-id sensible-browser
-bindsym $mod+F3 exec --no-startup-id i3-sensible-terminal -e vifm
-bindsym $mod+F4 exec --no-startup-id xcalc
-bindsym $mod+F5 exec --no-startup-id i3-sensible-terminal -e cmus
 
 ## Gaps
 ## Uncomment this if you use i3-gaps

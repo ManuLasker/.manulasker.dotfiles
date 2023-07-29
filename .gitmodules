@@ -1,6 +1,3 @@
 [submodule "nvim/.config/nvim"]
 	path = nvim/.config/nvim
 	url = git@github.com:ManuLasker/.manulasker.nvim.git
-[submodule "i3-themer"]
-	path = i3-themer
-	url = git@github.com:ManuLasker/i3-themer.git

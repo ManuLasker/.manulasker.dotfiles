@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-export STOW_FOLDERS="bin,nvim,personal,tmux,zsh,uwuntu,rxvt"
+export STOW_FOLDERS="bin,nvim,tmux,zsh,personal_config,fonts"
 export DOTFILES="$HOME/Documents/$ALIAS_USER/personal_projects/.$ALIAS_USER.dotfiles"
 export PERSONAL_PROJECTS="$HOME/Documents/$ALIAS_USER/personal_projects"
 export CONTRIBUTED_PROJECTS="$HOME/Documents/$ALIAS_USER/contributed_projects"
@@ -16,11 +16,6 @@ addToPath() {
 commitDotFiles() {
     pushd $DOTFILES
     pushd nvim/.config/nvim
-    git add .
-    git commit -m "automagic messaging from me in the past.  Have you accomplished something meaningful yet?"
-    git push -u origin master
-    popd
-    pushd i3-themer
     git add .
     git commit -m "automagic messaging from me in the past.  Have you accomplished something meaningful yet?"
     git push -u origin master
