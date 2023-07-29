@@ -16,6 +16,7 @@ popd
 function restartApps(){
     pkill dunst
     source ~/.zshrc
+    xrdb ~/.Xresources
     i3 restart
     notify-send "Installation Complete!"
 }

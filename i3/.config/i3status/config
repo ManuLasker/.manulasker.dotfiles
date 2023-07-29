@@ -5,29 +5,55 @@
 # The following line should contain a sharp s:
 # ß
 # If the above line is not correctly displayed, fix your editor first!
+# i3status configuration file for i3bar
+# Asakusa theme by @vickylaixy
+# see "man i3status" for documentation
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
 
 general {
         colors = true
+        color_good =     '#22ddcc'
+        color_degraded = '#dd9933'
+        color_bad =      '#aa5566'
         interval = 5
 }
 
 order += "disk /"
-order += "battery all"
+order += "wireless _first_"
+order += "cpu_temperature 0"
 order += "load"
+order += "volume master"
 order += "tztime local"
 
-battery all {
-        format = "%status %percentage %remaining"
+disk "/" {
+        format = " %avail/%total"
+}
+
+wireless _first_ {
+        format_up = " (%quality)"
+        format_down = " down"
+}
+
+cpu_temperature 0 {
+        format = " %degrees°C"
+}
+
+load {
+        format = " %1min"
+}
+
+volume master {
+	format = "VOL: %volume"
+	format_muted = ""
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
 }
 
 tztime local {
         format = "%Y-%m-%d %I:%M:%S"
-}
-
-load {
-        format = "%1min"
-}
-
-disk "/" {
-        format = "%avail"
 }
