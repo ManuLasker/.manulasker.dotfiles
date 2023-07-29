@@ -45,7 +45,8 @@ floating_modifier $mod
 exec --no-startup-id xwallpaper --output HDMI-1-1 --daemon --center ~/.config/xwallpaper/014.png
 exec --no-startup-id xwallpaper --output eDP-1-1 --daemon --center ~/.config/xwallpaper/014.png
 
-bindsym $mod+Return exec gnome-terminal -- zsh -c "tmux -f $HOME/.config/tmux/.tmux.conf"
+# bindsym $mod+Return exec gnome-terminal -- zsh -c "tmux -f $HOME/.config/tmux/.tmux.conf"
+bindsym $mod+Return exec wezterm
 
 # Window kill command
 bindsym $mod+Shift+q kill
