@@ -9,6 +9,7 @@ addToPathFront "$HOME/.local/opt/Postman"
 addToPathFront "$HOME/.local/opt/idea-IC-221.5921.22/bin"
 addToPathFront "$HOME/.local/opt/nvim-linux64/bin"
 addToPathFront "$HOME/.local/opt/julia-1.8.3/bin"
+addToPathFront "$HOME/.local/opt/lua-5.4.6/src"
 addToPathFront "$HOME/.pyenv/bin"
 addToPathFront "$HOME/.local/scripts"
 
