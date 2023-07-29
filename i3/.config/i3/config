@@ -219,7 +219,7 @@ mode "resize" {
 # Autostart applications
 exec_always --no-startup-id numlockx on
 exec xset r rate 200 40
-exec --no-startup-id xautolock -time 5 -locker 'i3lock-fancy -p'
+# exec --no-startup-id xautolock -time 5 -locker 'i3lock-fancy -p'
 exec --no-startup-id picom
 
 # set power-manager and volume control
