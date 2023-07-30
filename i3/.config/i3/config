@@ -62,6 +62,9 @@ bindsym $mod+F1 exec --no-startup-id wezterm -e alsamixer
 bindsym $mod+F2 exec --no-startup-id sensible-browser
 bindsym $mod+F3 exec --no-startup-id pavucontrol
 
+# touchpad on and off controller on laptop with Fn+<touchpad control functional keyr
+exec --no-startup-id synclient Touchpadoff=1
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
