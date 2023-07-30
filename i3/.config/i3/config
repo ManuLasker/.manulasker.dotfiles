@@ -58,8 +58,9 @@ bindsym $mod+g exec --no-startup-id google-chrome-stable --password-store=gnome 
 # User defined keys
 bindsym Print exec flameshot gui
 bindsym Shift+Print exec flameshot gui
-bindsym $mod+F1 exec --no-startup-id i3-sensible-terminal -e alsamixer
+bindsym $mod+F1 exec --no-startup-id wezterm -e alsamixer
 bindsym $mod+F2 exec --no-startup-id sensible-browser
+bindsym $mod+F3 exec --no-startup-id pavucontrol
 
 # change focus
 bindsym $mod+h focus left
@@ -184,8 +185,8 @@ set $mode_system (l)ock, (e)xit, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id i3lock-fancy -p, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym r exec --no-startup-id doas /sbin/reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id doas /sbin/poweroff, mode "default"
+    bindsym r exec --no-startup-id shutdown -r 1 mode "default"
+    bindsym Shift+s exec --no-startup-id shutdown -P 1, mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -219,7 +220,7 @@ mode "resize" {
 # Autostart applications
 exec_always --no-startup-id numlockx on
 exec xset r rate 200 40
-# exec --no-startup-id xautolock -time 5 -locker 'i3lock-fancy -p'
+exec --no-startup-id xautolock -time 80 -locker 'i3lock-fancy -p'
 exec --no-startup-id picom
 
 # set power-manager and volume control
@@ -228,18 +229,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 -q set Master 2dB+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 -q set Master 2db- unmute
 bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 
-# touchpad on and off controller on laptop with Fn+<touchpad control functional key>
-bindsym XF86TouchpadOn exec --no-startup-id synclient Touchpadoff=0
-bindsym XF86TouchpadOff exec --no-startup-select-pane -Lid synclient Touchpadoff=1
-
 focus_follows_mouse no
-
-# automatically start programs in specific workspaces on login
-#exec --no-startup-id i3-msg "workspace $tag1; exec /usr/bin/firefox"
-#exec --no-startup-id i3-msg "workspace $tag2; exec urxvt"
-#exec --no-startup-id i3-msg "workspace $tag3; exec /usr/bin/code"
-#exec --no-startup-id i3-msg "workspace $tag4; exec /usr/bin/icedove"
-
 
 ## Gaps
 ## Uncomment this if you use i3-gaps

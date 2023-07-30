@@ -52,7 +52,7 @@ config.window_background_image_hsb = {
   saturation = 1.0,
 }
 
-config.default_prog = { '/usr/bin/zsh', '-c', 'tmux', '--config', '~/.config/tmux/.tmux.conf' }
+config.default_prog = { '/usr/bin/zsh', '-c', 'tmux -f ~/.config/tmux/.tmux.conf' }
 
 print(config)
 
