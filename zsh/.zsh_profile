@@ -14,6 +14,8 @@ for i in `find -L $PERSONAL`; do
 done
 
 bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^g "goto-dir-fzf\n"
+bindkey -s ^w "tmux-windowizer\n"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
