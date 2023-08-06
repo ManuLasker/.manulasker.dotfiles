@@ -26,6 +26,11 @@ commitDotFiles() {
     popd
 }
 
+reattachToSession() {
+    # Alias reattach tmux session
+    tmux attach-session -d -t $(tmux list-sessions | awk -F: '{print $1}' | fzf)
+}
+
 dotFileInstall() {
     DOTFILES=$1
     $DOTFILES/install $1
