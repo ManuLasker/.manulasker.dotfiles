@@ -30,6 +30,8 @@ alias kben="setxkbmap us"
 # Alias for kubectl
 alias kb="kubectl"
 
+# Alias reattach tmux session
+alias tras="reattachToSession"
 
 # Alias for xrandr and fix my i3 workflow with multiple monitors
 alias xr2monitors="xrandr --output HDMI-1-1 --primary --mode 1920x1080 \
