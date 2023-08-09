@@ -142,6 +142,7 @@ set $ws7 7
 set $ws8 8
 
 exec --no-startup-id i3-msg "workspace $ws1; exec wezterm"
+exec --no-startup-id i3-msg "workspace $ws2; exec google-chrome-stable --password-store=gnome --enable-privacy-sandbox-ads-apis"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
