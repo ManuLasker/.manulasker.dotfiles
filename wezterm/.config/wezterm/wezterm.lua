@@ -13,11 +13,13 @@ end
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
-config.color_scheme = 'Nebula (base16)'
+-- config.color_scheme = 'Hemisu Dark (Gogh)'
+
+config.color_scheme = 'Rapture'
 
 -- Set background to same color as neovim
-config.colors = {}
-config.colors.background = '#111111'
+-- config.colors = {}
+-- config.colors.background = '#111111'
 
 config.font = wezterm.font_with_fallback {
   'Berkeley Mono',
@@ -38,19 +40,6 @@ config.window_padding = {
 
 config.tab_bar_at_bottom = true
 config.freetype_load_target = "HorizontalLcd"
-config.window_background_image = (os.getenv("HOME")..'/.config/xwallpaper/014.jpg')
-
-config.window_background_image_hsb = {
-  -- Darken the background image by reducing it to 1/3rd
-  brightness = 0.01,
-
-  -- You can adjust the hue by scaling its value.
-  -- a multiplier of 1.0 leaves the value unchanged.
-  hue = 1.0,
-
-  -- You can adjust the saturation also.
-  saturation = 1.0,
-}
 
 -- config.default_prog = { '/usr/bin/zsh', '-c', 'tmux -f ~/.config/tmux/.tmux.conf' }
 config.default_prog = { '/usr/bin/zsh' }

@@ -14,12 +14,21 @@
 # ß
 # If the above line is not correctly displayed, fix your editor first!
 
+# general {
+#     colors = true
+#     color_good =     '#22ddcc'
+#     color_degraded = '#dd9933'
+#     color_bad =      '#aa5566'
+#     interval = 5
+# }
+
 general {
-        colors = true
-        color_good =     '#22ddcc'
-        color_degraded = '#dd9933'
-        color_bad =      '#aa5566'
-        interval = 5
+    output_format = "i3bar"
+    colors = true
+    color_good = "#00FF00"
+    color_degraded = "#FFFF00"
+    color_bad = "#FF0000"
+    interval = 5
 }
 
 order += "disk /"
