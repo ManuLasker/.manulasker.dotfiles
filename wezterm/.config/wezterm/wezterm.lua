@@ -13,13 +13,11 @@ end
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
--- config.color_scheme = 'Hemisu Dark (Gogh)'
-
-config.color_scheme = 'Rapture'
+-- config.color_scheme = 'Tokyo Night Storm (Gogh)'
 
 -- Set background to same color as neovim
--- config.colors = {}
--- config.colors.background = '#111111'
+config.colors = {}
+config.colors.background = '#111111'
 
 config.font = wezterm.font_with_fallback {
   'Berkeley Mono',

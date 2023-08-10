@@ -1,32 +1,5 @@
 set $mod Mod1
 
-# set color variables
-# optional theme colorscheme
-# set $grey                #334455
-# set $magenta             #ddbbcc
-# set $blue                #557788
-# set $cyan                #22ddcc
-# set $black               #334455
-# set $white               #aacccc
-# set $yellow              #dd9933
-# set $red                 #aa5566
-# set $green               #779988
-#
-# # theme colors
-# set $bg-color 	         #334455
-# set $inactive-bg-color   #334455
-# set $text-color          #aacccc
-# set $inactive-text-color #557788
-# set $urgent-bg-color     #ee3355
-
-# set window colors
-# class                 border              background         text                 indicator
-# client.focused          $bg-color           $bg-color          $white               $bg-color
-# client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $bg-color
-# client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $bg-color
-# client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $bg-color
-# client.background       $bg-color
-
 # class                 border  bground text    indicator child_border
 client.focused          #4C7899 #285577 #FFFFFF #2E9EF4   #285577
 client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
@@ -44,14 +17,14 @@ bindsym $mod+u border none
 bindsym $mod+y border pixel 3
 bindsym $mod+n border normal
 
-font xft:Fira Code 13
+font xft:Fira Code 11
 
 floating_modifier $mod
 
 # set wall paper
 # exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/one_piece.jpg
-exec --no-startup-id xwallpaper --output HDMI-1-1 --daemon --center ~/.config/xwallpaper/014.png
-exec --no-startup-id xwallpaper --output eDP-1-1 --daemon --center ~/.config/xwallpaper/014.png
+exec --no-startup-id xwallpaper --output HDMI-1 --daemon --center ~/.config/xwallpaper/014.png
+exec --no-startup-id xwallpaper --output eDP-1 --daemon --center ~/.config/xwallpaper/014.png
 
 # bindsym $mod+Return exec gnome-terminal -- zsh -c "tmux -f $HOME/.config/tmux/.tmux.conf"
 bindsym $mod+Return exec wezterm
@@ -114,7 +87,7 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+# toggle tiling / floatia
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
@@ -283,25 +256,6 @@ mode "$mode_gaps_outer" {
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # START AND CONFIGURE i3bar
-
-# bar {
-# # start using custom config file (full path)
-#     status_command       i3status
-#     tray_padding         3
-#
-# 	colors {
-# 		# whole color settings
-# 		background   $black
-# 		statusline   $white
-# 		separator    $grey
-#
-# 		# type             border      backgr.     font
-# 		focused_workspace  $grey       $white      $black
-# 		active_workspace   $grey       $white      $black
-# 		inactive_workspace $grey       $black      $white
-# 		urgent_workspace   $valencia   $valencia   $black
-# 	}
-# }
 
 bar {
 # start using custom config file (full path)
