@@ -65,8 +65,16 @@ tmuxSetUpEnv() {
     tmux setenv AWS_SESSION_TOKEN $AWS_SESSION_TOKEN
 }
 
+setUpEks(){
+    aws eks update-kubeconfig --name $1-$2
+}
+
 watchPods() {
     watch -n 1 kubectl get pods -n "$1-$2"
+}
+
+watchPodsW() {
+    kubectl get pods -n "$1-$2" -w
 }
 
 showPods() {

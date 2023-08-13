@@ -26,6 +26,9 @@ floating_modifier $mod
 exec --no-startup-id xwallpaper --output HDMI-1 --daemon --center ~/.config/xwallpaper/014.png
 exec --no-startup-id xwallpaper --output eDP-1 --daemon --center ~/.config/xwallpaper/014.png
 
+# set duplicate screen
+# exec --no-startup-id xrandr --output HDMI-1 --primary --mode 1920x1080 --same-as eDP-1 --output eDP-1 --mode 1920x1080
+
 # bindsym $mod+Return exec gnome-terminal -- zsh -c "tmux -f $HOME/.config/tmux/.tmux.conf"
 bindsym $mod+Return exec wezterm
 
@@ -35,7 +38,9 @@ bindsym $mod+Shift+q kill
 # start program launcher
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run
-bindsym $mod+g exec --no-startup-id google-chrome-stable --password-store=gnome --enable-privacy-sandbox-ads-apis
+# bindsym $mod+g exec --no-startup-id google-chrome --password-store=gnome
+# bindsym $mod+F2 exec --no-startup-id sensible-browser
+# bindsym $mod+g exec --no-startup-id firefox --password-store=gnome --enable-privacy-sandbox-ads-apis
 # User defined keys
 bindsym Print exec flameshot gui
 bindsym Shift+Print exec flameshot gui
@@ -123,7 +128,6 @@ set $ws7 7
 set $ws8 8
 
 exec --no-startup-id i3-msg "workspace $ws1; exec wezterm"
-exec --no-startup-id i3-msg "workspace $ws2; exec google-chrome-stable --password-store=gnome --enable-privacy-sandbox-ads-apis"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1

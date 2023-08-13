@@ -12,6 +12,7 @@ addToPathFront "$HOME/.local/opt/julia-1.8.3/bin"
 addToPathFront "$HOME/.local/opt/lua-5.4.6/src"
 addToPathFront "$HOME/.pyenv/bin"
 addToPathFront "$HOME/.local/scripts"
+addToPathFront "$HOME/.local/opt/codelldb-x86_64/adapter"
 
 
 # Execute add to path to rust
