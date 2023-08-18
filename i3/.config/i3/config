@@ -141,8 +141,6 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 
-exec --no-startup-id i3-msg "workspace $ws3; exec firefox"
-
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
 bindsym $mod+Ctrl+2 move container to workspace $ws2
@@ -219,6 +217,7 @@ exec xset s off
 exec xset -dpms
 exec --no-startup-id xautolock -time 80 -locker 'i3lock-fancy -p'
 exec --no-startup-id picom
+exec --no-startup-id noisetorch -t 95
 
 # set power-manager and volume control
 
