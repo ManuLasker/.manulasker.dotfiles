@@ -32,6 +32,7 @@ alias kb="kubectl"
 
 # Alias reattach tmux session
 alias tras="reattachToSession"
+alias fzfse="fzfSessions"
 
 # Alias for xrandr and fix my i3 workflow with multiple monitors
 alias xr_duplicate_monitors="xrandr --output HDMI-1-1 --primary --mode 1920x1080 \

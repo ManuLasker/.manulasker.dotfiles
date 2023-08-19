@@ -28,7 +28,24 @@ commitDotFiles() {
 
 reattachToSession() {
     # Alias reattach tmux session
-    tmux attach-session -d -t $(tmux list-sessions | awk -F: '{print $1}' | fzf)
+    tmux_running=$(pgrep tmux)
+    tmux_sessions=$(tmux list-sessions 2> /dev/null)
+    if [[ -n $tmux_sessions ]] && [[ -n $tmux_running ]]; then
+        tmux attach-session -d -t $(tmux list-sessions | awk -F: '{print $1}' | fzf)
+    else
+        echo "No tmux session running"
+    fi
+}
+
+fzfSessions() {
+    # Alias reattach tmux session
+    tmux_running=$(pgrep tmux)
+    tmux_sessions=$(tmux list-sessions 2> /dev/null)
+    if [[ -n $tmux_sessions ]] && [[ -n $tmux_running ]]; then
+        tmux switch-client -t $(tmux list-sessions | awk -F: '{print $1}' | fzf)
+    else
+        echo "No tmux session running"
+    fi
 }
 
 dotFileInstall() {
