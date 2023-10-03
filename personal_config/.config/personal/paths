@@ -2,7 +2,7 @@
 
 # Add to path
 addToPathFront $LOCAL_PATH
-addToPathFront "$HOME/.local/opt/node-v16.14.2/bin"
+addToPathFront "$HOME/.local/opt/node-v18.18.0-linux-x64/bin"
 addToPathFront "$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 addToPathFront "$HOME/.local/opt/exercism-3.0.13"
 addToPathFront "$HOME/.local/opt/Postman"
