@@ -21,6 +21,7 @@ font xft:Fira Code 11
 
 floating_modifier $mod
 
+
 # set wall paper
 # exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/one_piece.jpg
 exec --no-startup-id xwallpaper --output HDMI-1 --daemon --center ~/.config/xwallpaper/014.png
@@ -32,24 +33,32 @@ exec --no-startup-id xwallpaper --output eDP-1 --daemon --center ~/.config/xwall
 # bindsym $mod+Return exec gnome-terminal -- zsh -c "tmux -f $HOME/.config/tmux/.tmux.conf"
 bindsym $mod+Return exec wezterm
 
-# Window kill command
+
 bindsym $mod+Shift+q kill
+
+# set default keyring
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run
-# bindsym $mod+g exec --no-startup-id google-chrome --password-store=gnome
+bindsym $mod+F1 exec --no-startup-id google-chrome --password-store=gnome-libsecret
+
+# bindsym $mod+F1 exec --no-startup-id $HOME/.local/opt/chrome-linux/chrome --password-store=gnome --proxy-server="192.168.1.68:8080" --proxy-bypass-list="localhost"
+# bindsym $mod+F2 exec --no-startup-id google-chrome-stable --password-store=gnome --proxy-server="192.168.1.68:8080" --proxy-bypass-list="localhost"
+# bindsym $mod+F2 exec --no-startup-id microsoft-edge-stable --password-store=gnome --proxy-server="192.168.1.92:8081"
 # bindsym $mod+F2 exec --no-startup-id sensible-browser
-# bindsym $mod+g exec --no-startup-id firefox --password-store=gnome --enable-privacy-sandbox-ads-apis
+
 # User defined keys
 bindsym Print exec flameshot gui
 bindsym Shift+Print exec flameshot gui
-bindsym $mod+F1 exec --no-startup-id wezterm -e alsamixer
-bindsym $mod+F2 exec --no-startup-id sensible-browser
-bindsym $mod+F3 exec --no-startup-id pavucontrol
+#bindsym $mod+F1 exec --no-startup-id wezterm -e alsamixer
+#bindsym $mod+F2 exec --no-startup-id sensible-browser
+#bindsym $mod+F3 exec --no-startup-id pavucontrol
+bindsym $mod+F3 exec --no-startup-id exec flameshot gui
 
 # touchpad on and off controller on laptop with Fn+<touchpad control functional keyr
-exec --no-startup-id synclient Touchpadoff=1
+exec --no-startup-id synclient Touchpadoff=0
 
 # change focus
 bindsym $mod+h focus left
@@ -218,13 +227,15 @@ exec xset s off
 exec xset -dpms
 exec --no-startup-id xautolock -time 80 -locker 'i3lock-fancy -p'
 exec --no-startup-id picom
-exec --no-startup-id noisetorch -t 95
 
 # set power-manager and volume control
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 -q set Master 2db- unmute
 bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 focus_follows_mouse no
 

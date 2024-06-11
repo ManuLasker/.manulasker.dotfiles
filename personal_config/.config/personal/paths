@@ -21,4 +21,5 @@ source "$HOME/.cargo/env"
 
 # Exported paths
 export AWS_DEFAULT_REGION=us-east-1
+# export http_proxy=http://192.168.1.97:8081
 export PYENV_ROOT="$HOME/.pyenv"
