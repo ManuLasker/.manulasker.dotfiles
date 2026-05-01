@@ -1,0 +1,123 @@
+{
+    // Dependencias necesarias:
+    // # GUI de control de audio (click derecho en speaker/mic)
+    // sudo dnf install pavucontrol
+    // # GUI de redes (click en wifi)
+    // sudo dnf install nm-connection-editor
+
+    // # Fuente con íconos (necesaria para los símbolos)
+    // sudo dnf install nerd-fonts-fira-code
+    "position": "top",
+    "height": 32,
+
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["clock"],
+    "modules-right": [
+        "network#wifi",
+        "network#tailscale",
+	"bluetooth",
+        "pulseaudio#speaker",
+        "pulseaudio#microphone",
+        "cpu",
+        "memory",
+        "battery"
+    ],
+
+    // ── Workspaces ────────────────────────────────────
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "format": "{name}"
+    },
+
+    // ── Clock ─────────────────────────────────────────
+    "clock": {
+        "format": "{:%A %d %b  %H:%M}",
+        "tooltip-format": "{calendar}"
+    },
+
+    // ── Network ───────────────────────────────────────
+    // To check this just use the following command
+    // TODO: ip link show
+    // TODO: How can I do this automatically for any computer, to parametrize interface.
+    "network#wifi": {
+        "interface": "wlp0s20f3",
+        "format-wifi": "󰤨  {essid} {signalStrength}%",
+        "format-disconnected": "󰤭  disconnected",
+        "format-disabled": "",
+        "tooltip-format-wifi": "IP: {ipaddr}\nGateway: {gwaddr}\nFreq: {frequency}GHz",
+        "on-click": "nm-connection-editor"
+    },
+
+    "network#tailscale": {
+        "interface": "tailscale0",
+        "format-ethernet": "󰒃  VPN",
+        "format-disconnected": "󰒄  VPN off",
+        "format-disabled": "󰒄  VPN off",
+        "tooltip-format-ethernet": "Tailscale VPN\nIP: {ipaddr}"
+    },
+
+    "bluetooth": {
+	"format": "󰂯",
+	"format-disabled": "󰂲",
+	"format-off": "󰂲",
+	"format-connected": "󰂱  {device_alias}",
+	"format-connected-battery": "󰂱  {device_alias} {device_battery_percentage}%",
+	"tooltip-format": "{controller_alias}",
+	"on-click": "blueman-manager"
+    },
+
+    // ── Audio ─────────────────────────────────────────
+    // @DEFAULT_SINK@ and @DEFAULT_SOURCE@ follow PipeWire
+    // automatically — works with any device you connect
+    // To check speakers, and microphone 
+    // TODO: 
+    // Ver dispositivos de audio
+    // pactl list sinks short    # speakers
+    // pactl list sources short  # microphone
+
+    "pulseaudio#speaker": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "󰝟  muted",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "scroll-step": 5,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "tooltip-format": "{desc} — {volume}%"
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": "󰍬  {volume}%",
+        "format-source-muted": "󰍭  muted",
+        "scroll-step": 5,
+        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-click-right": "pavucontrol",
+        "tooltip-format": "{source_desc} — {source_volume}%"
+    },
+
+    // ── System ────────────────────────────────────────
+    "cpu": {
+        "interval": 2,
+        "format": "  {usage}%",
+        "tooltip-format": "CPU Usage: {usage}%\nLoad: {load}"
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "  {used:0.1f}G/{total:0.1f}G",
+        "tooltip-format": "Used: {used:0.1f}G\nAvailable: {avail:0.1f}G"
+    },
+
+    "battery": {
+        "interval": 30,
+        "format": "{icon}  {capacity}%",
+        "format-charging": "󰂄  {capacity}%",
+        "format-full": "󰁹  full",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip-format": "{capacity}% — {timeTo}"
+    },
+
+}

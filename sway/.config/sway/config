@@ -1,0 +1,186 @@
+# Set modifier key to windows key (super/windows/command)
+set $mod Mod4
+# set terminal
+set $term alacritty
+# set app launcher
+set $menu fuzzel 
+
+# Define workspaces
+set $ws1 "1:obsidian"
+set $ws2 "2:terminal"
+set $ws3 "3:browser"
+set $ws4 "4:ai"
+set $ws5 "5:work"
+
+# Define displays
+# Check by swaymsg -t get_outputs
+set $disp1 	"HDMI-A-1"
+set $disp1resol "1920x1080@60Hz"
+set $disp1pos 	"0,0"
+set $disp1scale "1.0"
+set $disp2 	"eDP-1"
+set $disp2resol "1920x1080@59.999Hz"
+set $disp2pos 	"1920,0"
+set $disp2scale "1.2"
+
+
+#################### Font ####################
+font pango:FiraCode Nerd Font 11
+
+#################### Volume ####################
+# Need to install pavu-control
+# Increase volume 5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+# Decrease volume 5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+# Mute/unmute speaker
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+# Mute/unmute microphone
+bindsym $mod+m exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+#################### ScreenShot ####################
+# Need to install this: sudo dnf install grim slurp swappy
+# Screenshot region — select with mouse
+bindsym Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/screenshot-$(date +%Y%m%d_%H%M%S).png
+
+# Screenshot full screen
+bindsym $mod+F12 exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') ~/Pictures/Screenshots/screenshot-$(date +%Y%m%d_%H%M%S).png
+
+# Screenshot region — copy to clipboard directly
+bindsym $mod+Shift+F12 exec grim -g "$(slurp)" - | swappy -f - 
+
+
+#################### Basic Keybindings ####################
+
+# Open terminal when win+enter
+bindsym $mod+Return exec $term
+# Killing currently focused window
+bindsym $mod+Shift+q kill
+# Reload the sway configuration file
+bindsym $mod+Shift+c reload
+# Fuzzle as program launcher (dmenu alternative for wayland)
+bindsym $mod+d exec $menu
+# Full screen toggle
+bindsym $mod+f fullscreen toggle
+# Floating mode
+bindsym $mod+Shift+space floating toggle
+
+
+#################### Workspaces ####################
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+
+# Move focused window to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+
+#################### Pane Navigation ####################
+
+# Move focus between panes
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move panes themselves
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Split panes TODO: maybe check if this shortcut is good for me
+## split horizontal 
+bindsym $mod+Shift+b splith
+bindsym $mod+Shift+v splitv
+
+#################### Auto-assign apps to workspaces ####################
+# app_id is for native Wayland apps
+# class is for XWayland (X11) legacy apps
+
+assign [app_id="Alacritty"] $ws2
+
+
+#################### Auto-launch on startup ####################
+exec alacritty
+
+#################### Status Bar ####################
+# TODO: I'm going to do this in the sake of simplicity but for the next
+# iteration, I'll create a .sh to select in which monitor the waybar will show
+bar {
+	swaybar_command waybar
+}
+
+#################### Display Configuration ####################
+
+# base configuration of each output
+output $disp1 resolution $disp1resol position $disp1pos scale $disp1scale
+output $disp2 resolution $disp2resol position $disp2pos scale $disp2scale
+
+# --- Default at launch: just external monitor if connected
+# sway executes this at the beginning
+# TODO: this will turn off my screen whe I only have one monitor (working without external one)
+# Use an script to do this is the best way
+# exec_always swaymsg output $disp2 disable
+
+# --- Mode: When an external monitor just use external monitor
+# enable disp1 (external monitor) and disable disp2 (main laptop)
+bindsym $mod+F1 output $disp2 disable, \
+	output $disp1 enable resolution $disp1resol scale $disp1scale
+
+# --- Mode: Both monitors
+# enable both monitors
+bindsym $mod+F2 output $disp1 enable position $disp1pos resolution $disp1resol scale $disp1scale, \
+	output $disp2 enable position $disp2pos resolution $disp2resol scale $disp2scale
+
+#################### Resize Configuration ####################
+mode "resize" {
+    bindsym h resize grow width 10px
+    bindsym j resize shrink height 10px
+    bindsym k resize grow height 10px
+    bindsym l resize shrink width 10px
+    bindsym Return mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+#################### Copy History Configuration ####################
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
+bindsym $mod+v exec cliphist list | fuzzel --dmenu | cliphist decode | wl-copy
+
+#################### System Tray ####################
+# sudo dnf install network-manager-applet
+# sudo dnf install blueman bluez
+# sudo systemctl enable --now bluetooth
+exec sleep 2 && nm-applet --indicator
+exec sleep 2 && blueman-applet
+
+
+#################### Notifications Tray ####################
+# sudo dnf install mako
+exec mako
+# Descartar notificación actual
+bindsym $mod+n exec makoctl dismiss
+# Descartar todas
+bindsym $mod+Shift+n exec makoctl dismiss --all
+
+
+#################### Background Image ####################
+# sudo dnf install swaybg
+# TODO: Do something so it rotates maybe with a bash script here
+exec swaybg -o $disp1 -i ~/Pictures/Wallpapers/image.png -m fill
+exec swaybg -o $disp2 -i ~/Pictures/Wallpapers/image.png -m fill
+
+
+#################### Exit Configuration ####################
+# Exit sway (drops you back to the TTY,
+# to enter back to gnome use ctrl+alt+f1, and ctrl+alt+f3 to go to tty to open sway)
+bindsym $mod+Shift+e exec swaymsg exit

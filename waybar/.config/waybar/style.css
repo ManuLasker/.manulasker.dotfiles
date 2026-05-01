@@ -1,0 +1,175 @@
+/*
+	Instructions on how to download the FiraCode fonts
+	# Crea directorio de fuentes local
+	mkdir -p ~/.local/share/fonts
+
+	# Descarga FiraCode Nerd Font directamente
+	curl -LO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip
+
+	# Extrae en el directorio de fuentes
+	unzip FiraCode.zip -d ~/.local/share/fonts/FiraCode
+
+	# Actualiza el cache de fuentes
+	fc-cache -fv
+
+	# Limpia el zip
+	rm FiraCode.zip
+*/
+* {
+    font-family: "FiraCode Nerd Font", monospace;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+}
+
+window#waybar {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    border-bottom: 2px solid #313244;
+}
+
+/* ── Workspaces ────────────────────────────────── */
+#workspaces {
+    padding: 0 8px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #6c7086;
+    background: transparent;
+}
+
+#workspaces button:hover {
+    background: #313244;
+    color: #cdd6f4;
+}
+
+#workspaces button.focused {
+    color: #cdd6f4;
+    border-bottom: 2px solid #89b4fa;
+}
+
+#workspaces button.urgent {
+    color: #f38ba8;
+    border-bottom: 2px solid #f38ba8;
+}
+
+/* ── Mode (resize, etc) ────────────────────────── */
+#mode {
+    padding: 0 12px;
+    color: #f9e2af;
+    background: #313244;
+}
+
+/* ── Clock ─────────────────────────────────────── */
+#clock {
+    padding: 0 16px;
+    color: #cdd6f4;
+    font-weight: bold;
+}
+
+/* ── Network ───────────────────────────────────── */
+#network {
+    padding: 0 12px;
+    color: #89dceb;
+}
+
+#network.disconnected {
+    color: #6c7086;
+}
+
+/* Tailscale VPN off — subtle color */
+#network.tailscale.disconnected {
+    color: #45475a;
+}
+
+/* ── Bluetooth ───────────────────────────────────── */
+#bluetooth {
+    padding: 0 12px;
+    color: #89b4fa;
+}
+
+#bluetooth.off {
+    color: #45475a;
+}
+
+#bluetooth.connected {
+    color: #cba6f7;
+}
+
+/* ── Audio ─────────────────────────────────────── */
+#pulseaudio {
+    padding: 0 12px;
+    color: #cba6f7;
+}
+
+#pulseaudio.muted {
+    color: #6c7086;
+}
+
+/* ── CPU ───────────────────────────────────────── */
+#cpu {
+    padding: 0 12px;
+    color: #a6e3a1;
+}
+
+/* Warning colors when CPU is high */
+#cpu.warning {
+    color: #f9e2af;
+}
+
+#cpu.critical {
+    color: #f38ba8;
+}
+
+/* ── Memory ────────────────────────────────────── */
+#memory {
+    padding: 0 12px;
+    color: #89b4fa;
+}
+
+#memory.warning {
+    color: #f9e2af;
+}
+
+#memory.critical {
+    color: #f38ba8;
+}
+
+/* ── Battery ───────────────────────────────────── */
+#battery {
+    padding: 0 12px;
+    color: #f9e2af;
+}
+
+#battery.charging {
+    color: #a6e3a1;
+}
+
+#battery.full {
+    color: #a6e3a1;
+}
+
+#battery.warning {
+    color: #fab387;
+}
+
+#battery.critical {
+    color: #f38ba8;
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    to { color: transparent; }
+}
+
+/* ── Tray ──────────────────────────────────────── */
+#tray {
+    padding: 0 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
