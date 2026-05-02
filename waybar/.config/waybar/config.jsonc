@@ -25,9 +25,16 @@
 
     // ── Workspaces ────────────────────────────────────
     "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": false,
-        "format": "{name}"
+	"disable-scroll": true,
+	"all-outputs": false,
+	"format": "{name}",
+	"persistent-workspaces": {
+	    "1:obsidian": [],
+	    "2:terminal": [],
+	    "3:browser": [],
+	    "4:ai": [],
+	    "5:work": []
+	}
     },
 
     // ── Clock ─────────────────────────────────────────

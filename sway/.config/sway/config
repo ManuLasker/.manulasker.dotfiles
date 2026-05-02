@@ -1,7 +1,7 @@
 # Set modifier key to windows key (super/windows/command)
 set $mod Mod4
 # set terminal
-set $term alacritty
+set $term alacritty -e tmux new-session -A -s main
 # set app launcher
 set $menu fuzzel 
 
@@ -82,6 +82,13 @@ bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 
+# Back and Forth
+bindsym $mod+Tab workspace back_and_forth
+# Workspace anterior/siguiente en orden numérico
+bindsym $mod+Ctrl+h workspace prev
+bindsym $mod+Ctrl+l workspace next
+
+
 #################### Pane Navigation ####################
 
 # Move focus between panes
@@ -104,7 +111,6 @@ bindsym $mod+Shift+v splitv
 #################### Auto-assign apps to workspaces ####################
 # app_id is for native Wayland apps
 # class is for XWayland (X11) legacy apps
-
 assign [app_id="Alacritty"] $ws2
 
 
@@ -148,7 +154,6 @@ mode "resize" {
     bindsym l resize shrink width 10px
     bindsym Return mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
 #################### Copy History Configuration ####################
@@ -179,6 +184,40 @@ bindsym $mod+Shift+n exec makoctl dismiss --all
 exec swaybg -o $disp1 -i ~/Pictures/Wallpapers/image.png -m fill
 exec swaybg -o $disp2 -i ~/Pictures/Wallpapers/image.png -m fill
 
+
+#################### Gaps ####################
+# En sway config — agrega gaps configurables
+gaps inner 5
+gaps outer 5
+
+# Bind para toggle gaps a 0
+bindsym $mod+g exec swaymsg gaps inner all set 0; swaymsg gaps outer all set 0
+bindsym $mod+Shift+g exec swaymsg gaps inner all set 5; swaymsg gaps outer all set 5
+
+#################### Window Appearance ####################
+# Solo muestra bordes, sin título
+default_border pixel 2
+default_floating_border pixel 2
+
+# Cuando hay UNA sola ventana en el workspace, ni siquiera muestra borde
+smart_borders on
+
+# class                 border    bg        text      indicator child_border
+client.focused          #89b4fa   #89b4fa   #1e1e2e   #89b4fa   #89b4fa
+client.focused_inactive #45475a   #45475a   #cdd6f4   #45475a   #45475a
+client.unfocused        #313244   #313244   #6c7086   #313244   #313244
+client.urgent           #f38ba8   #f38ba8   #1e1e2e   #f38ba8   #f38ba8
+
+#################### DBus Environment ####################
+exec ~/.config/sway/scripts/keyring.sh
+exec dbus-update-activation-environment --systemd \
+    DISPLAY \
+    WAYLAND_DISPLAY \
+    XDG_CURRENT_DESKTOP \
+    SWAYSOCK \
+    SSH_AUTH_SOCK \
+    XDG_RUNTIME_DIR \
+    SSH_CONNECTION
 
 #################### Exit Configuration ####################
 # Exit sway (drops you back to the TTY,

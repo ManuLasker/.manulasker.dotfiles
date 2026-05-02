@@ -1,0 +1,163 @@
+# ============================================================
+# Alacritty Configuration
+# ============================================================
+
+[general]
+# Live reload on config changes
+live_config_reload = true
+
+# ── Window ──────────────────────────────────────────────────
+[window]
+# Padding inside the terminal
+padding = { x = 12, y = 12 }
+
+# Window decorations: full | none | transparent | buttonless
+decorations = "none"
+
+# Transparency: 0.0 = fully transparent, 1.0 = fully opaque
+opacity = 0.85
+
+# Wayland-specific transparency support
+blur = true
+
+# Initial window size in cells
+dimensions = { columns = 120, lines = 35 }
+
+# Dynamic title (changes based on what's running)
+dynamic_title = true
+
+# ── Font ────────────────────────────────────────────────────
+[font]
+size = 12.0
+
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "FiraCode Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "FiraCode Nerd Font"
+style = "Italic"
+
+[font.bold_italic]
+family = "FiraCode Nerd Font"
+style = "Bold Italic"
+
+# Offset between glyphs (negative values reduce spacing)
+[font.offset]
+x = 0
+y = 2
+
+# ── Cursor ──────────────────────────────────────────────────
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+blink_interval = 500
+unfocused_hollow = true
+
+# ── Scrolling ───────────────────────────────────────────────
+[scrolling]
+history = 10000
+multiplier = 3
+
+# ── Selection ───────────────────────────────────────────────
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+# ── Bell ────────────────────────────────────────────────────
+[bell]
+animation = "EaseOutExpo"
+duration = 0
+color = "#ffffff"
+
+# ── Mouse ───────────────────────────────────────────────────
+[mouse]
+hide_when_typing = true
+
+# ── Colors (Catppuccin Mocha) ───────────────────────────────
+[colors.primary]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+dim_foreground = "#7f849c"
+bright_foreground = "#cdd6f4"
+
+[colors.cursor]
+text = "#1e1e2e"
+cursor = "#f5e0dc"
+
+[colors.vi_mode_cursor]
+text = "#1e1e2e"
+cursor = "#b4befe"
+
+[colors.search.matches]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.search.focused_match]
+foreground = "#1e1e2e"
+background = "#a6e3a1"
+
+[colors.footer_bar]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.hints.start]
+foreground = "#1e1e2e"
+background = "#f9e2af"
+
+[colors.hints.end]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.selection]
+text = "#1e1e2e"
+background = "#f5e0dc"
+
+[colors.normal]
+black   = "#45475a"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#f5c2e7"
+cyan    = "#94e2d5"
+white   = "#bac2de"
+
+[colors.bright]
+black   = "#585b70"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#f5c2e7"
+cyan    = "#94e2d5"
+white   = "#a6adc8"
+
+[colors.dim]
+black   = "#45475a"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#f5c2e7"
+cyan    = "#94e2d5"
+white   = "#bac2de"
+
+# ── Keybindings ─────────────────────────────────────────────
+[keyboard]
+bindings = [
+    # Increase/decrease font size
+    { key = "Plus", mods = "Control", action = "IncreaseFontSize" },
+    { key = "Minus", mods = "Control", action = "DecreaseFontSize" },
+    { key = "Key0", mods = "Control", action = "ResetFontSize" },
+
+    # Copy/paste with Ctrl+Shift+C/V (standard)
+    { key = "C", mods = "Control|Shift", action = "Copy" },
+    { key = "V", mods = "Control|Shift", action = "Paste" },
+
+    # Search
+    { key = "F", mods = "Control|Shift", action = "SearchForward" },
+]

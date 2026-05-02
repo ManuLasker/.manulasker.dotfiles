@@ -10,7 +10,7 @@ BACKUP_DIR   := $(HOME)/.dotfiles-backups
 # ============================================================
 # List of packages — ONLY ADD HERE when you have a new one
 # ============================================================
-PACKAGES := sway bash waybar swappy mako
+PACKAGES := sway bash waybar swappy mako alacritty tmux
 
 # ============================================================
 .PHONY: all help stow unstow force stow-all unstow-all force-all \
