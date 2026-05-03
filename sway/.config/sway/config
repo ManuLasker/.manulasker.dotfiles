@@ -38,6 +38,13 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 # Mute/unmute microphone
 bindsym $mod+m exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
+#################### Scratchpad ####################
+# Send focused window to scratchpad (hide it)
+bindsym $mod+Shift+minus move scratchpad
+
+# Show/hide scratchpad windows (toggle)
+bindsym $mod+minus scratchpad show
+
 #################### ScreenShot ####################
 # Need to install this: sudo dnf install grim slurp swappy
 # Screenshot region — select with mouse
@@ -111,11 +118,11 @@ bindsym $mod+Shift+v splitv
 #################### Auto-assign apps to workspaces ####################
 # app_id is for native Wayland apps
 # class is for XWayland (X11) legacy apps
-assign [app_id="Alacritty"] $ws2
+# assign [app_id="Alacritty"] $ws2
 
 
 #################### Auto-launch on startup ####################
-exec alacritty
+# exec alacritty
 
 #################### Status Bar ####################
 # TODO: I'm going to do this in the sake of simplicity but for the next
@@ -187,12 +194,12 @@ exec swaybg -o $disp2 -i ~/Pictures/Wallpapers/image.png -m fill
 
 #################### Gaps ####################
 # En sway config — agrega gaps configurables
-gaps inner 5
-gaps outer 5
+gaps inner 3
+gaps outer 3
 
 # Bind para toggle gaps a 0
 bindsym $mod+g exec swaymsg gaps inner all set 0; swaymsg gaps outer all set 0
-bindsym $mod+Shift+g exec swaymsg gaps inner all set 5; swaymsg gaps outer all set 5
+bindsym $mod+Shift+g exec swaymsg gaps inner all set 3; swaymsg gaps outer all set 3
 
 #################### Window Appearance ####################
 # Solo muestra bordes, sin título
@@ -209,15 +216,17 @@ client.unfocused        #313244   #313244   #6c7086   #313244   #313244
 client.urgent           #f38ba8   #f38ba8   #1e1e2e   #f38ba8   #f38ba8
 
 #################### DBus Environment ####################
-exec ~/.config/sway/scripts/keyring.sh
 exec dbus-update-activation-environment --systemd \
-    DISPLAY \
-    WAYLAND_DISPLAY \
-    XDG_CURRENT_DESKTOP \
-    SWAYSOCK \
-    SSH_AUTH_SOCK \
-    XDG_RUNTIME_DIR \
-    SSH_CONNECTION
+  SWAYSOCK \
+  WAYLAND_DISPLAY \
+  XDG_RUNTIME_DIR \
+  XDG_CURRENT_DESKTOP \
+  DISPLAY \
+  SSH_AUTH_SOCK \
+  SSH_CONNECTION
+
+#################### Portals (after dbus env is set) ####################
+exec sleep 2 && systemctl --user restart xdg-desktop-portal xdg-desktop-portal-wlr
 
 #################### Exit Configuration ####################
 # Exit sway (drops you back to the TTY,
