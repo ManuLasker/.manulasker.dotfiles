@@ -10,7 +10,9 @@ BACKUP_DIR   := $(HOME)/.dotfiles-backups
 # ============================================================
 # List of packages — ONLY ADD HERE when you have a new one
 # ============================================================
-PACKAGES := sway bash waybar swappy mako alacritty tmux xdg-desktop-portal
+# Remove all sway, mako, swappy, waybar, xdg-desktop-portal for now
+# Just install bash, alacritty, tmux, nvim
+PACKAGES := bash alacritty tmux nvim skills
 
 # ============================================================
 .PHONY: all help stow unstow force stow-all unstow-all force-all \
