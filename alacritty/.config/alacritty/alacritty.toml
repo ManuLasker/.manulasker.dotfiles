@@ -53,7 +53,7 @@ y = 2
 
 # ── Cursor ──────────────────────────────────────────────────
 [cursor]
-style = { shape = "Beam", blinking = "On" }
+style = { shape = "Block", blinking = "On" }
 blink_interval = 500
 unfocused_hollow = true
 
